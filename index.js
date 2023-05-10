@@ -71,7 +71,7 @@ app.post('/products', async(req, res) => {
     }
 })
 
-app.get('/search',async()=>{
+app.get('/search',async(req,res)=>{
     const {serachitem} = req.query.name;
     try {
         const products = await Product.find({name:serachitem});
