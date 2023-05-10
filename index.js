@@ -72,9 +72,11 @@ app.post('/products', async(req, res) => {
 })
 
 app.get('/search',async(req,res)=>{
-    const {serachitem} = req.query.name;
+    const searchitem = req.query.name;
+    console.log(searchitem);
+
     try {
-        const products = await Product.find({name:serachitem});
+        const products = await Product.find({name:searchitem});
         res.status(200).json(products);
     } catch (error) {
         res.status(500).json({message: error.message})
