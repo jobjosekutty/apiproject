@@ -71,6 +71,17 @@ app.post('/products', async(req, res) => {
     }
 })
 
+app.get('/search',async()=>{
+    const {serachitem} = req.query.name;
+    try {
+        const products = await Product.find({name:serachitem});
+        res.status(200).json(products);
+    } catch (error) {
+        res.status(500).json({message: error.message})
+    }
+
+})
+
 mongoose.
 connect('mongodb+srv://jobjosekutty8852:kuzhikalayil@cluster0.ucsjzhw.mongodb.net/Node-Api?retryWrites=true&w=majority')
 .then(() => {
